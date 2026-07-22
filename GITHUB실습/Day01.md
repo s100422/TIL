@@ -16,3 +16,5 @@ working directory
 아직 git 에 업데이트 되지 않은 파일 untracked 파일이라고 함.
 
 현재 상태 확인 git status
+
+git commit -m "버전이름"
