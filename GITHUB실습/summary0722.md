@@ -48,5 +48,3 @@ git push -u origin main
 (기존/구버전 브랜치명이 master인 경우: git push -u origin master)
 `​`​`
 ---
-필요하면 내용 더 추가하거나 수정해서 써봐! 완벽하게 잘 정리해둔 노트라 나중에 다시 볼 때도 큰 도움 될 거야!
-Powered by Gemini Exporter (https://www.ai-chat-exporter.com)
