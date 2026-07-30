@@ -15,7 +15,7 @@ const CONTROLS = [
   ['GRAVITY', 600, 2600, 50, '중력 (낙하 무게감)'],
   ['JUMP_VELOCITY', -1100, -300, 10, '점프력 (음수)'],
   ['WIRE_MAX_LENGTH', 150, 500, 10, '와이어 사거리'],
-  ['ANCHOR_RADIUS', 8, 40, 1, '탑 판정 반경'],
+  ['ANCHOR_RADIUS', 8, 100, 1, '탑 판정 반경'],
 ];
 
 export function createTuningPanel() {

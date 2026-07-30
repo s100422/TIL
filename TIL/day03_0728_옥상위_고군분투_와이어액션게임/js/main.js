@@ -338,8 +338,10 @@ function render() {
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
   // 배경/심연은 스크롤과 무관하게 화면 전체를 덮는 고정 배경이다 — 번역(translate) 밖에서 그린다.
-  drawBackground(clock, camera.x);
-  drawAbyss(stage.abyssTop);
+  // 배경 하늘과 심연의 지하철은 옥상 높이(abyssTop)를 기준으로 맞춰 그린다 —
+  // 지하철 차량 지붕이 옥상선에 정확히 닿아야 건물보다 높이 뜬 것처럼 보이지 않는다.
+  drawBackground(stage.abyssTop);
+  drawAbyss(stage.abyssTop, clock);
 
   // 조준 판정에 쓰는 마우스는 항상 월드 좌표로 변환해서 써야 한다 —
   // 화면 좌표를 그대로 쓰면 카메라가 스크롤된 만큼 조준이 어긋난다.
@@ -358,7 +360,7 @@ function render() {
   ctx.translate(-camera.x, 0);
 
   drawPlatforms(stage.platforms);
-  drawCoins(stage.coins);
+  drawCoins(stage.coins, clock);
   drawGoal(stage.goal);
   drawAnchors(
     stage.anchors,
@@ -470,7 +472,8 @@ requestAnimationFrame((t) => {
   requestAnimationFrame(loop);
 });
 
-// --- 개발용 튜닝 패널 ---
+// --- 개발용 튜닝 패널 (숨김) ---
+// CP25에서 확정한 튜닝값(config.js)으로 플레이하므로 패널을 화면에서 내렸다.
 // 값 조정이 다시 필요해지면 위 import 주석을 풀고 아래 호출도 살리면 된다.
 // createTuningPanel();
 

@@ -1,0 +1,11 @@
+# Claude Code 로컬 설정 — 이 PC의 절대 경로/세션 ID가 들어 있어 공유하지 않는다.
+# 팀과 나눠야 하는 설정은 .claude/settings.json 에 둘 것.
+.claude/settings.local.json
+
+# OS/편집기 부산물 (OneDrive 폴더라 desktop.ini 가 생길 수 있다)
+desktop.ini
+Thumbs.db
+.DS_Store
+*.swp
+.vscode/
+.idea/
