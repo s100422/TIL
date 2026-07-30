@@ -1,0 +1,26 @@
+# 비밀키 / 환경변수 (절대 커밋 금지)
+.env
+.env.local
+.env.*.local
+
+# Python 생성물
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# 로그
+*.log
+
+# 압축 파일
+*.zip
+
+# Obsidian 로컬 설정
+.obsidian/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

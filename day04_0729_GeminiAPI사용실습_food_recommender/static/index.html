@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘 뭐 먹지?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="banner" id="banner">
+      <span class="character" id="character">🍽️</span>
+      <h1>오늘 뭐 먹지?</h1>
+    </div>
+
+    <main class="card">
+      <label for="mood">지금 기분이나 날씨는 어때요?</label>
+      <input type="text" id="mood" placeholder="예: 피곤하고 비 오는 날" />
+
+      <label for="budget">예산은요?</label>
+      <select id="budget">
+        <option value="저렴">저렴하게</option>
+        <option value="보통">보통</option>
+        <option value="비쌈">비싸도 괜찮음</option>
+      </select>
+
+      <button id="recommend-btn">추천해줘</button>
+
+      <div id="result" class="result hidden"></div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
