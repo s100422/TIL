@@ -10,7 +10,7 @@
 
 | Day | 날짜 | 주제 | 핵심 내용 | 산출물 |
 | :---: | :---: | :--- | :--- | :--- |
-| **00** | — | [Git 워크플로우 & CLI 명령어](Day00_Gitd워크플로우_명령어.md) | Git 4단계 흐름(Working Directory → Staging → Local → Remote), 필수 명령어, PowerShell/Git Bash 명령어 비교 | 노트 |
+| **00** | — | [Git 워크플로우 & CLI 명령어](Day00_Git워크플로우_명령어.md) | Git 4단계 흐름(Working Directory → Staging → Local → Remote), 필수 명령어, PowerShell/Git Bash 명령어 비교 | 노트 |
 | **01** | 07-24 | [AI 이해 — 나의 강점 찾기](day01_0724_AI이해_과제_나의강점) | Gemini와의 대화로 강점 도출 및 경험 기반 검증 | 노트 + 실습 화면 |
 | **02** | 07-27 | [프롬프트 엔지니어링 & n8n 워크플로우](day02_0727_여러개의_시트_워크플로우) | Zero-shot / Few-shot / CoT / Self-Consistency / ReAct / Tree-of-Thought 정리<br>리뷰 분류 JSON 출력 실습, 구글폼 3개 → Merge → 조건 분기 → 메일 발송 자동화 | 노트 + 워크플로우 |
 | **03** | 07-28 | [옥상 위 고군분투! — 와이어 액션 게임](day03_0728_옥상위_고군분투_와이어액션게임) | 순수 HTML/CSS/JS + Canvas 2D, ES 모듈 구조 분리, 와이어 진자 운동·관성 물리 구현 | 🎮 실행 가능한 게임 |
