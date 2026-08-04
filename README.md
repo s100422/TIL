@@ -16,6 +16,7 @@
 | **03** | 07-28 | [옥상 위 고군분투! — 와이어 액션 게임](day03_0728_옥상위_고군분투_와이어액션게임) | 순수 HTML/CSS/JS + Canvas 2D, ES 모듈 구조 분리, 와이어 진자 운동·관성 물리 구현 | 🎮 실행 가능한 게임 |
 | **04** | 07-29 | [오늘 뭐 먹지? — Gemini 메뉴 추천](day04_0729_GeminiAPI사용실습_food_recommender) | FastAPI + Gemini API, 기분·날씨·예산 입력 → 메뉴·추천이유·분류태그를 단일 JSON으로 응답 | 🍽 실행 가능한 웹앱 |
 | **05** | 07-30 | [n8n 날씨 + 오늘의 운세](day05_0730_API_n8n실습_날씨운세) | 날씨 API 호출 + AI Agent 사주/오행 분석을 하나의 메시지로 병합해 발송 | 노트 + 워크플로우 |
+| **07-08** | 08-03~08-04 | [오늘은 배달이다! — Vercel/Supabase 실습](day07-08_Vercel_supabase_실습) | Next.js + Supabase(Auth/DB/RLS)로 배달 맛집 기록 서비스 제작, 카카오 로컬/맵 API + Gemini API로 근처 음식점 추천 기능 구현, Vercel 배포 | 실행 가능한 웹앱 → **[s100422/TodayIDeliver](https://github.com/s100422/TodayIDeliver)** |
 
 <br>
 
