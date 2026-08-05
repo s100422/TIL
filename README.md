@@ -17,6 +17,7 @@
 | **04** | 07-29 | [오늘 뭐 먹지? — Gemini 메뉴 추천](day04_0729_GeminiAPI사용실습_food_recommender) | FastAPI + Gemini API, 기분·날씨·예산 입력 → 메뉴·추천이유·분류태그를 단일 JSON으로 응답 | 🍽 실행 가능한 웹앱 |
 | **05** | 07-30 | [n8n 날씨 + 오늘의 운세](day05_0730_API_n8n실습_날씨운세) | 날씨 API 호출 + AI Agent 사주/오행 분석을 하나의 메시지로 병합해 발송 | 노트 + 워크플로우 |
 | **07-08** | 08-03~08-04 | [오늘은 배달이다! — Vercel/Supabase 실습](day07-08_Vercel_supabase_실습) | Next.js + Supabase(Auth/DB/RLS)로 배달 맛집 기록 서비스 제작, 카카오 로컬/맵 API + Gemini API로 근처 음식점 추천 기능 구현, Vercel 배포 | 실행 가능한 웹앱 → **[s100422/TodayIDeliver](https://github.com/s100422/TodayIDeliver)** |
+| **09** | 08-05 | [미니프로젝트1 — 고객 VOC 자동 분류 & 긴급 알림](day09_0805_n8n_VOC자동분류알림) | 구글폼 문의를 n8n이 감지 → 이메일+물품번호로 중복 확인 → Gemini AI Agent가 분류/감정/긴급도/요약 판단(Structured Output Parser) → Code 노드로 결과값 검증 → 시트 저장 → 긴급도 '상'이면 디스코드 알림 | 노트 + 워크플로우 → **[s100422/mini-project1-voc-workflow](https://github.com/s100422/mini-project1-voc-workflow)** ([리포트 보기](https://s100422.github.io/mini-project1-voc-workflow/)) |
 
 <br>
 
@@ -30,12 +31,14 @@
 | 02 | AI가 음식 카테고리를 제대로 분류할지 확신이 없었음 | 분류 기준이 추상적이었음 | 실제 서비스의 카테고리 목록을 그대로 가져와 세분화 → 분류 정확도 확보 |
 | 00 | PowerShell에서 `ls -a` / `ls -al` 에러 | `ls`는 리눅스 명령어가 아니라 PowerShell 별칭이라 리눅스 옵션을 인식하지 못함 | `ls -Force` 사용, 또는 터미널을 Git Bash로 변경 |
 | 00 | 경로에 띄어쓰기가 있으면 `cd` 실패 | 터미널이 공백에서 인자를 끊어서 인식 | 경로 전체를 큰따옴표로 감싸기, `Tab` 자동완성 활용 |
+| 09 | AI Agent에 Output Parser를 붙였는데 분류 결과가 계속 기본값(기타/중립/중)으로만 나옴 | Output Parser를 붙이면 응답이 `output` 키 안에 한 번 더 감싸져서 나온다는 걸 몰랐음 | `$json.category`가 아니라 `$json.output.category`로 접근 |
+| 09 | 물품번호 "00001"처럼 앞자리 0이 있는 값이 시트에서 숫자로 바뀌어 중복 확인 매칭이 안 됨 | 구글 시트가 숫자처럼 보이는 문자열을 자동으로 숫자로 변환 | 시트 서식을 일반 텍스트로 변경 + 코드에서도 앞자리 0을 제거하고 비교하는 정규화 함수 추가 |
 
 <br>
 
 ## 🧰 다뤄본 도구
 
-`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D`
+`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `Discord Webhook` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D`
 
 <br>
 
