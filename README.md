@@ -20,6 +20,7 @@
 | **09** | 08-05 | [미니프로젝트1 — 고객 VOC 자동 분류 & 긴급 알림](day09_0805_n8n_VOC자동분류알림) | 구글폼 문의를 n8n이 감지 → 이메일+물품번호로 중복 확인 → Gemini AI Agent가 분류/감정/긴급도/요약 판단(Structured Output Parser) → Code 노드로 결과값 검증 → 시트 저장 → 긴급도 '상'이면 디스코드 알림 | 노트 + 워크플로우 → **[s100422/mini-project1-voc-workflow](https://github.com/s100422/mini-project1-voc-workflow)** ([리포트 보기](https://s100422.github.io/mini-project1-voc-workflow/)) |
 | **10** | 08-05~08-06 | [미니프로젝트2 — 금융 뉴스 브리핑 Agent](day10_0805_n8n_금융뉴스브리핑) | RSS 4개(미국2+한국2) 수집 → 발송이력 시트로 중복 제거 → 금융 무관 기사만 배제 → 기사 전체를 배치로 묶어 Gemini 1회 호출로 요약/중요도/카테고리 판단 → 응답 검증 및 안전 기본값 처리 → 중요도 4+ 만 디스코드 발송 + 이력 기록 | 노트 + 워크플로우 |
 | **11** | 08-06~08-10 | [미니프로젝트3 — 배당 모아 해외여행](day11_0806_배당모아해외여행) | Next.js+Supabase+Gemini로 배당주 AI 포트폴리오 플래너 제작. `responseSchema`로 배분안 2개 강제 생성 + 환각/근거없음/비중합/월커버리지 4중 검증, Gemini 웹검색 그라운딩으로 배당 삭감·인상 리스크 배지, 연차별 배당성장 시뮬레이터는 서버가 결정론적으로 계산 | 실행 가능한 웹앱 → **[s100422/Miniproject3](https://github.com/s100422/Miniproject3)** (배포: [dividend-travel-planner.vercel.app](https://dividend-travel-planner.vercel.app/)) |
+| **12-13** | 08-27~08-28 | [Gemini Function Calling — TMDB 영화 에이전트](day12-13_0827_Gemini_TMDB에이전트) | Gemini interactions API의 function calling으로 TMDB 영화 목록/상세/검색/평점상위 조회 도구 4종 구현, `asyncio.gather`로 병렬 실행, `previous_interaction_id`로 대화 맥락을 유지하는 `while` 루프형 에이전트 완성 | 노트 + 실습 코드 |
 
 <br>
 
@@ -39,12 +40,14 @@
 | 10 | 기사 한 건당 LLM 호출 → 18건이면 API 18번 호출되는 구조를 뒤늦게 발견 | 개별 처리 로직을 그대로 배치 데이터에 적용 | 기사 전체를 번호 매긴 목록 하나로 합쳐서 LLM에 통째로 넘기고 "입력 개수와 같은 길이 배열"로 응답받아 실행당 호출 1회로 고정 |
 | 11 | Gemini에 웹검색 그라운딩(`tools:[{google_search:{}}]`)과 `responseSchema`(JSON 강제)를 같은 요청에 같이 쓰면 400 에러 | 두 기능이 같은 요청에서 상호 배타적 | 그라운딩 호출은 스키마 강제 없이 자유 텍스트로 받고 서버 코드가 직접 파싱 |
 | 11 | 화면을 하나씩 만들다 보니 페이지마다 색감·타이포그래피·여백 톤이 제각각이 됨 | 디자인 시스템 없이 화면 단위로 작업 | 기능·레이아웃은 직접 짜고, [Stitch](https://stitch.withgoogle.com/)에 넣어 디자인 톤을 하나의 시스템으로 뽑아낸 뒤 그 기준으로 다시 코드에 입힘 |
+| 12-13 | Gemini 도구(tool) 명세를 Claude 스타일(`input_schema`)로 작성했다가 `ValidationError` | 같은 "function calling"이어도 API마다 요구하는 스펙이 다름 — 이 API는 최상위 `"type": "function"` + `parameters` 키를 요구 | 붙여넣기 전에 그 API의 도구 스펙 포맷부터 확인, 도구 딕셔너리의 `name`이 라우팅에 쓰는 키와 철자까지 일치하는지도 같이 확인 |
+| 12-13 | 최신 정보를 물었는데 실제로는 없는 옛날 정보로 답변, 도구 호출 로그도 비어있어서 원인을 API 쪽으로 의심함 | 같은 셀에 `tools` 없이 호출하던 예전 테스트 코드가 안 지워지고 남아있었음 | 새 버그를 의심하기 전에 셀/파일에 남아있는 예전 코드부터 확인 |
 
 <br>
 
 ## 🧰 다뤄본 도구
 
-`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `Discord Webhook` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D` · `Next.js` · `TypeScript` · `Supabase` · `Vercel` · `Stitch`
+`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `Discord Webhook` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D` · `Next.js` · `TypeScript` · `Supabase` · `Vercel` · `Stitch` · `TMDB API` · `httpx`
 
 <br>
 
