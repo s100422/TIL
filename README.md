@@ -21,6 +21,7 @@
 | **10** | 08-05~08-06 | [미니프로젝트2 — 금융 뉴스 브리핑 Agent](day10_0805_n8n_금융뉴스브리핑) | RSS 4개(미국2+한국2) 수집 → 발송이력 시트로 중복 제거 → 금융 무관 기사만 배제 → 기사 전체를 배치로 묶어 Gemini 1회 호출로 요약/중요도/카테고리 판단 → 응답 검증 및 안전 기본값 처리 → 중요도 4+ 만 디스코드 발송 + 이력 기록 | 노트 + 워크플로우 |
 | **11** | 08-06~08-10 | [미니프로젝트3 — 배당 모아 해외여행](day11_0806_배당모아해외여행) | Next.js+Supabase+Gemini로 배당주 AI 포트폴리오 플래너 제작. `responseSchema`로 배분안 2개 강제 생성 + 환각/근거없음/비중합/월커버리지 4중 검증, Gemini 웹검색 그라운딩으로 배당 삭감·인상 리스크 배지, 연차별 배당성장 시뮬레이터는 서버가 결정론적으로 계산 | 실행 가능한 웹앱 → **[s100422/Miniproject3](https://github.com/s100422/Miniproject3)** (배포: [dividend-travel-planner.vercel.app](https://dividend-travel-planner.vercel.app/)) |
 | **12-13** | 08-27~08-28 | [Gemini Function Calling — TMDB 영화 에이전트](day12-13_0827_Gemini_TMDB에이전트) | Gemini interactions API의 function calling으로 TMDB 영화 목록/상세/검색/평점상위 조회 도구 4종 구현, `asyncio.gather`로 병렬 실행, `previous_interaction_id`로 대화 맥락을 유지하는 `while` 루프형 에이전트 완성 | 노트 + 실습 코드 |
+| **14** | 08-31 | [Gemini Function Calling — 개인 예산 관리 에이전트](day14_0831_Gemini_예산관리에이전트) | 지출/예산 등록·수정·삭제·검색을 Gemini function calling으로 구현, `(date,tag)` 자연키 대신 거래별 고유 id로 식별하도록 리팩터링해 동일 날짜·태그 중복 거래 문제 해결, Budget/Expenditure 중복 클래스를 `Ledger` 하나로 통합, JSON 파일로 상태 영속화(`_next_id` 포함), 월별 Markdown 리포트 자동 생성, 여러 `.py` 모듈을 노트북 하나로 통합 | 노트북 + 기획서 → **[s100422/mini-project-budget](https://github.com/s100422/mini-project-budget)** |
 
 <br>
 
@@ -42,12 +43,14 @@
 | 11 | 화면을 하나씩 만들다 보니 페이지마다 색감·타이포그래피·여백 톤이 제각각이 됨 | 디자인 시스템 없이 화면 단위로 작업 | 기능·레이아웃은 직접 짜고, [Stitch](https://stitch.withgoogle.com/)에 넣어 디자인 톤을 하나의 시스템으로 뽑아낸 뒤 그 기준으로 다시 코드에 입힘 |
 | 12-13 | Gemini 도구(tool) 명세를 Claude 스타일(`input_schema`)로 작성했다가 `ValidationError` | 같은 "function calling"이어도 API마다 요구하는 스펙이 다름 — 이 API는 최상위 `"type": "function"` + `parameters` 키를 요구 | 붙여넣기 전에 그 API의 도구 스펙 포맷부터 확인, 도구 딕셔너리의 `name`이 라우팅에 쓰는 키와 철자까지 일치하는지도 같이 확인 |
 | 12-13 | 최신 정보를 물었는데 실제로는 없는 옛날 정보로 답변, 도구 호출 로그도 비어있어서 원인을 API 쪽으로 의심함 | 같은 셀에 `tools` 없이 호출하던 예전 테스트 코드가 안 지워지고 남아있었음 | 새 버그를 의심하기 전에 셀/파일에 남아있는 예전 코드부터 확인 |
+| 14 | 같은 날 같은 태그로 두 번 등록한 거래를 하나만 삭제하려 했더니 둘 다 합쳐져서 지워짐 | `(date, tag)`를 거래의 식별자로 썼는데 이 조합은 유일성이 보장되지 않음(자연키 충돌) | 등록마다 절대 안 겹치는 고유 id(대리키)를 발급하고, 그 id로만 실제 수정/삭제가 실행되도록 변경 |
+| 14 | `.py` 스크립트에서 쓰던 `__file__`, `sys.stdout.reconfigure()`를 노트북 셀에 그대로 옮기니 에러 | 노트북은 파일에서 실행되는 게 아니라 셀이 커널 네임스페이스에 주입되는 구조라 `__file__`이 없고, `sys.stdout`도 콘솔이 아니라 커스텀 출력 객체라 `.reconfigure()`가 없음 | 경로는 `os.getcwd()`로, 인코딩 방지 코드는 애초에 필요 없어서 삭제 |
 
 <br>
 
 ## 🧰 다뤄본 도구
 
-`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `Discord Webhook` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D` · `Next.js` · `TypeScript` · `Supabase` · `Vercel` · `Stitch` · `TMDB API` · `httpx`
+`Git` · `GitHub` · `n8n` · `Google Forms / Sheets` · `Gemini API` · `Discord Webhook` · `FastAPI (Python)` · `HTML / CSS / JavaScript` · `Canvas 2D` · `Next.js` · `TypeScript` · `Supabase` · `Vercel` · `Stitch` · `TMDB API` · `httpx` · `Jupyter Notebook` · `python-dotenv`
 
 <br>
 
